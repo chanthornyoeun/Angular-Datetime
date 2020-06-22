@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="end" style="margin-bottom: 1rem;">
+            <button mat-raised-button color="primary" routerLink="/order/add">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <table class="defualt-table">
+            <thead>
+                <th>Id</th>
+                <th>Order Date</th>
+                <th>Order Date Time</th>
+                <th style="text-align: center;">Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.id}}</td>
+                    <td>{{order.orderDate | date: 'dd-MM-yyy'}}</td>
+                    <td>{{order.orderDateTime | date: 'dd-MM-yyy HH:mm:ss'}}</td>
+                    <td style="text-align: center;">
+                        <button mat-icon-button color="primary" routerLink="/order/edit/{{order.id}}">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="deleteOrder(order.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>
